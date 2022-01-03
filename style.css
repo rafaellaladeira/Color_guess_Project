@@ -1,10 +1,12 @@
 * {
-    text-align: center;
+  background-color: rgb(228, 187, 201);
+  text-align: center;
 }
 
 .ball {
-    padding: 35px 35px;
-    border-radius: 50%;
-    border-style: double;
-    display: inline-block;
+  padding: 40px 40px;
+  border-radius: 50%;
+  border-style: double;
+  display: inline-block;
 }
+
