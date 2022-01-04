@@ -24,31 +24,27 @@ window.onload = function teste() {
   text.innerText = pickNameColor();
   for (const i of color) {
     i.style.backgroundColor = pickColor();
-    const comparacao = 'rgb' + pickNameColor();
-    if (comparacao == i.style.backgroundColor) {
-      i.id = 'answer';
-    }
   }
 };
 
 // Requisito 5:
 
 const msg = document.createElement('p');
+msg.id = 'answer';
 msg.style.fontWeight = 'bold';
 container.append(msg);
 msg.innerText = 'Escolha uma cor';
 msg.style.fontSize = '25px';
 
 function check(event) {
-  if (event.target.id === 'answer') {
+  if (event.target.style.backgroundColor === ('rgb' + text.innerText)) {
     msg.innerText = 'Acertou!';
   } else {
     msg.innerText = 'Errou! Tente novamente!';
   }
 }
-
-for (const i of color) {
-  i.addEventListener('click', check);
+for (let i = 0; i < color.length; i += 1) {
+  color[i].addEventListener('click', check);
 }
 
 // Requisito 6:
@@ -56,16 +52,10 @@ for (const i of color) {
 const button = document.querySelector('button');
 
 function resetGame() {
-
   text.innerText = pickNameColor();
   msg.innerText = 'Escolha uma cor';
-  for (const i of color) {
-    i.style.backgroundColor = pickColor();
-    i.removeAttribute('id');
-    const comparacao = 'rgb' + pickNameColor();
-    if (comparacao === i.style.backgroundColor) {
-      i.id = 'answer';
-    }
+  for (let i = 0; i < color.length; i += 1) {
+    color[i].style.backgroundColor = pickColor();
   }
 }
 button.addEventListener('click', resetGame);
@@ -74,11 +64,12 @@ button.addEventListener('click', resetGame);
 
 const score = document.querySelector('#score');
 let placar = 0;
-function changeScore() {
-  if (msg.innerText === 'Acertou!') {
+function changeScore(event) {
+  if (event.target.style.backgroundColor === ('rgb' + text.innerText)) {
     placar += 3;
   }
   return placar;
-};
-
-score.innerText = changeScore();
+}
+for (let i = 0; i < color.length; i += 1) {
+  score.innerText = color[i].addEventListener('click', changeScore);
+}
